@@ -56,7 +56,12 @@ st.text("Provide URL of plant image for classification")
 
 @st.cache_resource
 def load_model():
-    model = tf.keras.models.load_model('/app/models/')  # Update the path to your model
+    try:
+        model = tf.keras.models.load_model('/app/models/')  # Update the path to your model
+        st.write("Model loaded sccussfully")
+    except Exception as e:
+        st.write(f"Error loading model : {e}")
+        raise e
     return model
 
 with st.spinner('Loading Model Into Memory....'):
