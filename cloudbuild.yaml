@@ -31,7 +31,7 @@ steps:
   - "-c"
   - |
     echo "Docker Container Built"
-    ls -la
+    ls -la /app/
     ls -al /app/models/
 - name: "gcr.io/cloud-builders/gke-deploy"
   args:
@@ -39,3 +39,4 @@ steps:
   - --filename=k8s/
   - --location=us-central1
   - --cluster=cicd-cluster-1
+

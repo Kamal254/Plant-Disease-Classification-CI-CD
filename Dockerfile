@@ -26,7 +26,7 @@ RUN apt-get update
 ENV APP_HOME /app
 WORKDIR $APP_HOME
 COPY . ./
-COPY models/ /app/models/
+COPY models /app/models
 
 RUN ls -la $APP_HOME/
 RUN ls -la /app/models/
@@ -36,3 +36,4 @@ RUN pip install -r requirements.txt
 
 # Run the streamlit on container startup
 CMD ["streamlit", "run", "--server.enableCORS", "false", "imgwebapp.py"]
+
